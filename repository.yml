@@ -1,0 +1,10 @@
+repo.name: iconservo-c-atmel-software-framework
+
+
+repo.versions:
+    "0.0.0": "master"
+    "0.0.1": "master"
+    
+repo.newt_compatibility:
+    0.0.0:
+        0.0.0: good
