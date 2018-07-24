@@ -3,7 +3,7 @@
  *
  * \brief USBB Host Driver header file.
  *
- * Copyright (C) 2011-2015 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2011-2018 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -299,6 +299,8 @@
 #define uhd_get_pipe_endpoint_number(p)          USBB_P_RD_BITFIELD(UPCFG,PEPNUM,p)
 #define uhd_configure_pipe_type(p, type)         USBB_P_WR_BITFIELD(UPCFG,PTYPE,p, type)
 #define uhd_get_pipe_type(p)                     USBB_P_RD_BITFIELD(UPCFG,PTYPE,p)
+#define Is_uhd_pipe_bulk(p)                      (AVR32_USBB_UPCFG0_PTYPE_BULK==uhd_get_pipe_type(p))
+#define Is_uhd_pipe_bulk_in(p)                   (Is_uhd_pipe_bulk(p)&&uhd_is_pipe_in(p))
 #define uhd_enable_pipe_bank_autoswitch(p)       USBB_P_SET_BITS(UPCFG,AUTOSW,p)
 #define uhd_disable_pipe_bank_autoswitch(p)      USBB_P_CLR_BITS(UPCFG,AUTOSW,p)
 #define Is_uhd_pipe_bank_autoswitch_enabled(p)   USBB_P_TST_BITS(UPCFG,AUTOSW,p)

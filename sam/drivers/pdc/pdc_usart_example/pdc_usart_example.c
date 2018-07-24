@@ -110,7 +110,7 @@ void console_usart_irq_handler(void)
 	if ((usart_get_status(CONSOLE_UART) & US_CSR_RXBUFF) == US_CSR_RXBUFF) {
 		/* Configure PDC for data transfer (RX and TX) */
 		pdc_rx_init(g_p_usart_pdc, &g_pdc_usart_packet, NULL);
-		pdc_tx_init(g_p_usart_pdc, &g_pdc_usart_packet, NULL);
+		//pdc_tx_init(g_p_usart_pdc, &g_pdc_usart_packet, NULL);
 	}
 }
 
@@ -163,7 +163,7 @@ int main(void)
 	pdc_rx_init(g_p_usart_pdc, &g_pdc_usart_packet, NULL);
 
 	/* Enable PDC transfers */
-	pdc_enable_transfer(g_p_usart_pdc, PERIPH_PTCR_RXTEN | PERIPH_PTCR_TXTEN);
+	pdc_enable_transfer(g_p_usart_pdc, PERIPH_PTCR_RXTEN /*| PERIPH_PTCR_TXTEN*/);
 
 	/* Enable USART IRQ */
 	usart_enable_interrupt(CONSOLE_UART, US_IER_RXBUFF);
